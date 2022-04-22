@@ -1,9 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>person-details</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" defaultHref="/tabs/(person:person)">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ person?.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="unfavoriteFilm()" *ngIf="isFavorite">
+        <ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
+      </ion-button>
+      <ion-button (click)="favoriteFilm()" *ngIf="!isFavorite">
+        <ion-icon name="star-outline" slot="icon-only" color="secondary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding="">
+
+  <ion-card *ngIf="person" class="movie-card">
+
+    <ion-card-header>Name: {{ person.name }}</ion-card-header>
+ 
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="transgender-outline" slot="start"></ion-icon>
+Gender: {{ person.gender }}
+    </ion-item>
+ 
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="calendar-number-outline" slot="start"></ion-icon>
+      Birth Year: {{ person.birth_year }}
+    </ion-item>
+
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="eye-outline" slot="start"></ion-icon>
+      Eye Color: {{ person.eye_color }}
+    </ion-item>
+
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="color-palette-outline" slot="start"></ion-icon>
+      Hair Color: {{ person.hair_color }}
+    </ion-item>
+
+  </ion-card>
 
 </ion-content>
