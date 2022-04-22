@@ -1,9 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>planet-details</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" defaultHref="/tabs/(planets:planets)">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ planet?.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="unfavoriteFilm()" *ngIf="isFavorite">
+        <ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
+      </ion-button>
+      <ion-button (click)="favoriteFilm()" *ngIf="!isFavorite">
+        <ion-icon name="star-outline" slot="icon-only" color="secondary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card *ngIf="planet" class="movie-card">
+
+    <ion-card-header>Name: {{ planet.name }}</ion-card-header>
+ 
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="snow-outline" slot="start"></ion-icon>
+      Climate: {{ planet.climate }}
+    </ion-item>
+ 
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="invert-mode-outline" slot="start"></ion-icon>
+      Day Length: {{ planet.rotation_period }}
+    </ion-item>
+
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="people-outline" slot="start"></ion-icon>
+      Population: {{ planet.population }}
+    </ion-item>
+
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="resize-outline" slot="start"></ion-icon>
+      Diameter: {{ planet.diameter }}
+    </ion-item>
+
+  </ion-card>
 
 </ion-content>
